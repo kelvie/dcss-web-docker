@@ -1,0 +1,12 @@
+version: "2"
+services:
+  crawl-web:
+    build: .
+    image: kelvie/dcss-webtiles:latest
+    ports:
+      - 9090:8080
+    volumes:
+      - crawl-web-data:/data
+
+volumes:
+  crawl-web-data:
