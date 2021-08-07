@@ -7,6 +7,7 @@ services:
       - 9090:8080
     volumes:
       - crawl-web-data:/data
+    restart: unless-stopped
 
 volumes:
   crawl-web-data:
