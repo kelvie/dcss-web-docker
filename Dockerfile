@@ -27,7 +27,8 @@ RUN pip install -r /crawl/webserver/requirements/dev.py3.txt
 RUN echo 'password_db = "/data/passwd.db3"' >> /crawl/webserver/config.py
 RUN echo 'settings_db = "/data/settings.db3"' >> /crawl/webserver/config.py
 RUN ln -s /data/rcs rcs
+RUN ln -s /data/saves saves
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "mkdir -p /data/rcs; exec python webserver/server.py"]
+CMD ["sh", "-c", "mkdir -p /data/saves; mkdir -p /data/rcs; exec python webserver/server.py"]
