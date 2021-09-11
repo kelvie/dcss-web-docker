@@ -13,7 +13,7 @@ RUN apk add --no-cache make gcc g++ perl git python3 py3-yaml libpng-dev \
     libexecinfo-dev ncurses-dev
 
 RUN cd /crawl/crawl-ref/source && \
-    make -j4 WEBTILES=y EXTRA_LIBS=-lexecinfo
+    make -j31 WEBTILES=y EXTRA_LIBS=-lexecinfo
 
 FROM python:3-alpine
 
