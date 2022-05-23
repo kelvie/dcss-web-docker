@@ -1,4 +1,4 @@
-FROM alpine:latest as builder
+FROM python:3.9-alpine as builder
 
 MAINTAINER Kelvie Wong <kelvie@kelvie.ca>
 
@@ -9,13 +9,14 @@ COPY ./crawl /crawl
 COPY ./.git /.git/
 
 
-RUN apk add --no-cache make gcc g++ perl git python3 py3-yaml libpng-dev \
+RUN apk add --no-cache make gcc g++ perl git libpng-dev \
     libexecinfo-dev ncurses-dev
 
+RUN pip install pyyaml
 RUN cd /crawl/crawl-ref/source && \
     make -j31 WEBTILES=y EXTRA_LIBS=-lexecinfo
 
-FROM python:3-alpine
+FROM python:3.9-alpine
 
 WORKDIR /crawl
 COPY --from=builder /crawl/crawl-ref/source/ /crawl/

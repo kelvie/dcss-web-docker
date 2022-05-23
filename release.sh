@@ -4,5 +4,5 @@ set -euo pipefail
 pushd crawl
 VERSION=$(git describe)
 popd
-docker buildx build --push --platform linux/amd64,linux/arm64 -t kelvie/dcss-webtiles:latest .
-docker buildx build --push --platform linux/amd64,linux/arm64 -t kelvie/dcss-webtiles:$VERSION .
+sudo docker buildx build --push --platform linux/amd64,linux/arm64 -t kelvie/dcss-webtiles:latest .
+sudo docker buildx build --push --platform linux/amd64,linux/arm64 -t kelvie/dcss-webtiles:$VERSION .
